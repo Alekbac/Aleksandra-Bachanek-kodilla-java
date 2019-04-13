@@ -22,5 +22,6 @@ public class TestingMain {
         if (expectDifference != actualDifference) {
             System.out.println("Error");
         } else System.out.println("Result of sum is OK");
+
     }
 }

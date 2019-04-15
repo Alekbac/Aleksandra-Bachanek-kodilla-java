@@ -5,69 +5,61 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 public class ShapeCollectorTestSuite {
 
     @Before
     public void beforeEveryTest() {
-        System.out.println( "Test case begin." );
+        System.out.println( "Test case: begin." );
     }
 
     @After
-    public void beforeEveryTest() {
-        System.out.println( "Test case end." );
+    public void afterEveryTest() {
+        System.out.println( "Test case: end." );
     }
 
     @Test
-    public void addFigure(Shape shape){
-        ArrayList<Shape> figure = new ArrayList<>();
-        figure.add(new Shape("square", "a^2");
-        figure.add(new Shape("triangle", "a*h/2");
+    public void testAddFigure(Shape shape){
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape shape = new Circle(10);
 
-        System.out.println("Initial list: " + figure.size()));
+        shapeCollector.add(shape);
 
-        figure.add(new Shape("circle", "3.14*R^2");
-
-        System.out.println("After adding element: " + figure.size());
+        assertEquals(1; list.size());
     }
     @Test
-    public void removeFigure(Shape shape){
-        ArrayList<Shape> figure = new ArrayList<>();
+    public void testRemoveFigure(Shape shape){
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape shape = new Circle(10);
 
-        figure.add(new Shape("square", "a^2");
-        figure.add(new Shape("triangle", "a*h/2");
-        figure.add(new Shape("circle", "3.14*R^2");
+        shapeCollector.remove(shape);
 
-        System.out.println("Removing last object from collection.");
-        figure.remove(figure.size()-1);
-
-        for(Shape object: figure) {
-            System.out.println("List after removing: " + figure);
-        }
+        assertEquals(0, list.size());
     }
     @Test
-    public void getFigure(int n){
-        ArrayList<Shape> figure = new ArrayList<>();
+    public void testGetFigure(int n){
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape shape = new Circle(10);
 
-        figure.add(new Shape("square", "a^2");
-        figure.add(new Shape("triangle", "a*h/2");
-        figure.add(new Shape("circle", "3.14*R^2");
+        shapeCollector.add(shape);
+        System.out.println("One figure from the list: " + shapeCollector.getFigure(0));
 
-        for(int n=0; n < figure.size(); n++) {
-            System.out.println("Element " + n + " of the list is: " + figure.get(n));
-        }
+        assertEquals(0, shapeCollector.getFigure(0));
     }
     @Test
-    public void showFigures(){
-        ArrayList<Shape> figure = new ArrayList<>();
+    public void testShowFigures(){
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape shape = new Circle(10);
 
-        figure.add(new Shape("square", "a^2");
-        figure.add(new Shape("triangle", "a*h/2");
-        figure.add(new Shape("circle", "3.14*R^2");
+        shapeCollector.add(shape);
 
-        for(Shape object: figure) {
-            System.out.println("Field of figure " + figure.getShapeName() +" is equal: " + figure.getField());
-        }
+        ArrayList<Shape> list = new ArrayList<>();
+        list.add(shape);
+
+        ArrayList<Shape> finalList = shapeCollector.getObjects();
+
+        assertEquals(list.toString(); finalList.toString());
     }
-
 }
+

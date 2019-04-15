@@ -1,7 +1,12 @@
 package com.kodilla.testing.collection;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class CollectionTestSuite {
 
@@ -15,34 +20,38 @@ public class CollectionTestSuite {
         System.out.println("Test Case: end");
     }
 
+    private OddNumberExterminator exterminator;
+
     @Test
     public void testOddNumbersExterminatorEmptyList ()
     {
-        ArrayList<Integer> evenNumbers = new ArrayList<>();
+        ArrayList<Integer> oddNumbers = new ArrayList<>();
+        List<Integer> emptyList = OddNumberExterminator.exterminate(oddNumbers);
 
-        if (evenNumbers.size() > 0){
-            System.out.println("Test of empty list NG");
-        }else {
-            System.out.println( "Test of empty list OK" );
-        }
+        System.out.println("Test of empty list");
+
+        Assert.assertEquals(oddNumbers, emptyList);
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList ()
     {
-        ArrayList<Integer> evenNumbers = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
-        evenNumbers.add(30);
-        evenNumbers.add(11);
-        evenNumbers.add(15);
-        evenNumbers.add(2);
+        list.add(30);
+        list.add(11);
+        list.add(15);
+        list.add(2);
 
-        for(int i = 0; i < evenNumbers.size(); i++){
-            int even = evenNumbers.get(i)%2;
-            if(even == 0){
-                System.out.println("Even numbers from the list: " + evenNumbers.get(i));
-                evenNumbers.remove(i);
-            }
-        }
+        ArrayList<Integer> evenOnly = new ArrayList<>();
+
+        evenOnly.add(30);
+        evenOnly.add(2);
+
+        List<Integer> compareList = OddNumberExterminator.exterminate(list);
+
+        System.out.println("Test of full list");
+
+        Assert.assertEquals(evenOnly,compareList );
     }
 }

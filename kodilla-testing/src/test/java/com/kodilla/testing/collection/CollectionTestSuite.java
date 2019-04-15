@@ -18,28 +18,31 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList ()
     {
-        ArrayList<Integer> numbers = new ArrayList<>();
+        ArrayList<Integer> evenNumbers = new ArrayList<>();
 
-        System.out.println("Test of empty list OK");
+        if (evenNumbers.size() > 0){
+            System.out.println("Test of empty list NG");
+        }else {
+            System.out.println( "Test of empty list OK" );
+        }
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList ()
     {
-        ArrayList<Integer> numbers = new ArrayList<>();
+        ArrayList<Integer> evenNumbers = new ArrayList<>();
 
-        numbers.add(30);
-        numbers.add(11);
-        numbers.add(15);
-        numbers.add(2);
+        evenNumbers.add(30);
+        evenNumbers.add(11);
+        evenNumbers.add(15);
+        evenNumbers.add(2);
 
-        for(int i = 0; i<numbers.size(); i++){
-            int even = numbers.get(i)%2;
+        for(int i = 0; i < evenNumbers.size(); i++){
+            int even = evenNumbers.get(i)%2;
             if(even == 0){
-                System.out.println("Even numbers from list: " + numbers.get(i));
-                numbers.remove(i);
+                System.out.println("Even numbers from the list: " + evenNumbers.get(i));
+                evenNumbers.remove(i);
             }
         }
-        System.out.println("Removed odd numbers: " + numbers);
     }
 }

@@ -12,6 +12,8 @@ public class OddNumberExterminator {
             for (int number: numbers){
                 if(number % 2 == 0){
                     oddNumbers.add(number);
+                }else{
+                    break;
                 }
             }
        return oddNumbers;

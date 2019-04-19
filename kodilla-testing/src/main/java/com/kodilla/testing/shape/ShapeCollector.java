@@ -6,8 +6,16 @@ public class ShapeCollector {
 
     private ArrayList<Shape> shapeCollector = new ArrayList<>();
 
-    public ArrayList<Shape> showFigures(){
+    public ArrayList<Shape> getShapeCollector(){
+
         return shapeCollector;
+    }
+
+    public void showFigures(){
+
+       for(int i = 0; i < shapeCollector.size(); i++){
+           System.out.println(shapeCollector.get(i).getShapeName() + shapeCollector.get(i).getField());
+       }
     }
 
     public void addFigure(Shape shape){
@@ -16,7 +24,6 @@ public class ShapeCollector {
     }
 
     public void removeFigure(Shape shape){
-
         shapeCollector.remove(shape);
     }
 

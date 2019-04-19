@@ -1,9 +1,8 @@
-package shape;
+package com.kodilla.testing.shape;
 
-import com.kodilla.testing.shape.*;
-import org.junit.*;
-
-import java.util.ArrayList;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,7 +26,7 @@ public class ShapeCollectorTestSuite {
         //When
         shapeCollector.addFigure(shape);
         //Then
-        assertEquals(1, shapeCollector.showFigures().size());
+        assertEquals(1, shapeCollector.getShapeCollector().size());
     }
     @Test
     public void testRemoveFigure(){
@@ -39,7 +38,7 @@ public class ShapeCollectorTestSuite {
         //When
         shapeCollector.removeFigure(shape);
         //Then
-        assertEquals(0, shapeCollector.showFigures().size());
+        assertEquals(0, shapeCollector.getShapeCollector().size());
     }
     @Test
     public void testGetFigure(){
@@ -54,15 +53,15 @@ public class ShapeCollectorTestSuite {
         assertEquals(shape, result);
     }
    @Test
-    public void testShowFigures(){
-        ArrayList<Shape> shape = new ArrayList<>();
+    public void testShowFigures() {
 
-        shape.add( new Circle(10) );
-        shape.add(new Triangle(10, 12));
-        shape.add (new Square(10));
+       ShapeCollector shapeCollector = new ShapeCollector();
+       shapeCollector.addFigure( new Circle( 5 ) );
+       shapeCollector.addFigure( new Triangle( 10, 3 ) );
+       shapeCollector.addFigure( new Square( 6 ) );
 
-        for(Shape figure: shape){
-            System.out.println("Figures from the list: " + figure.getShapeName() +" "+ figure.getField());
-        }
-    }
+       for (int i = 0; i < 3; i++) {
+           System.out.println( "Figure: " + shapeCollector.getFigure(i).getShapeName() + ", field: " + shapeCollector.getFigure(i).getField());
+       }
+   }
 }

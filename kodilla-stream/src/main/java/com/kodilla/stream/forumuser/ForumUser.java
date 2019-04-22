@@ -2,7 +2,7 @@ package com.kodilla.stream.forumuser;
 
 import java.time.LocalDate;
 
-final class ForumUser {
+public final class ForumUser {
     private final int userID;
     private String userName;
     private char sex;

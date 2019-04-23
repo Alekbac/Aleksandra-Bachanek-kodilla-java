@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +11,7 @@ public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
     @Before
     public void before() {
+        ShapeCollector shapeCollector = new ShapeCollector();
         testCounter++;
         System.out.println("Preparing to execute test #" + testCounter);
     }
@@ -54,14 +56,18 @@ public class ShapeCollectorTestSuite {
     }
    @Test
     public void testShowFigures() {
-
+        //Given
        ShapeCollector shapeCollector = new ShapeCollector();
        shapeCollector.addFigure( new Circle( 5 ) );
        shapeCollector.addFigure( new Triangle( 10, 3 ) );
        shapeCollector.addFigure( new Square( 6 ) );
 
-       for (int i = 0; i < 3; i++) {
-           System.out.println( "Figure: " + shapeCollector.getFigure(i).getShapeName() + ", field: " + shapeCollector.getFigure(i).getField());
-       }
+       String expextedString = " Shape: Circle , field: 78.53981633974483; " +
+                                "Shape: Triangle , field: 15.0; " +
+                                 "Shape: Square , field: 36.0; ";
+       //When
+       String actualString = shapeCollector.showFigures();
+       //Then
+       Assert.assertEquals(expextedString, actualString);
    }
 }

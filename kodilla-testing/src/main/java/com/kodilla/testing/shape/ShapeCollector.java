@@ -11,11 +11,13 @@ public class ShapeCollector {
         return shapeCollector;
     }
 
-    public void showFigures(){
+    public String showFigures(){
+        String figureBody = " ";
 
-       for(int i = 0; i < shapeCollector.size(); i++){
-           System.out.println(shapeCollector.get(i).getShapeName() + shapeCollector.get(i).getField());
+       for(Shape figure: shapeCollector ){
+           figureBody += "Shape: " + figure.getShapeName() + " , field: " + figure.getField()+"; ";
        }
+       return figureBody;
     }
 
     public void addFigure(Shape shape){

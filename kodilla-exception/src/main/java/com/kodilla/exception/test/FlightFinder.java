@@ -20,12 +20,12 @@ public class FlightFinder {
         }else {
             String report;
 
-            if (!flyingDirection.containsKey( arrival )) {
-                report = "The plane form " + departure + " don't land in " + arrival;
+            if (!flyingDirection.containsKey( arrival ) && !flyingDirection.containsKey( departure )) {
+                report = "There isn't connection between " + departure + " and " + arrival;
             } else if (!flyingDirection.containsKey( departure )) {
                 report = "The plane to " + arrival + " don't fly from " + departure;
             } else {
-                report = "There isn't connection between" + departure + " and " + arrival;
+                report = "The plane form " + departure + " don't land in " + arrival;
             }
             throw new RouteNotFoundException(report);
         }
@@ -35,7 +35,6 @@ public class FlightFinder {
         Flight flight1 = new Flight( "Chicago", "Buenos Aires" );
         Flight flight2 = new Flight( "London", "Los Angeles" );
         Flight flight3 = new Flight( "Warsaw", "Berlin" );
-        //We flight 3 chciałam uzyskać komunikat "There isn't connection between" + departure + " and " + arrival;"
 
         FlightFinder flightFinder = new FlightFinder();
 

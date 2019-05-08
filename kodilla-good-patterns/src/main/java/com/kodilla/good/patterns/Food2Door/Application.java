@@ -4,8 +4,8 @@ public class Application {
 
     public static void main(String[] args) {
 
-        OrderProdProcessor orderProcessor = new OrderProdProcessor(new OrderProdRepository());
-        orderProcessor.run( supplier );
-
+        OrderProdService orderService = new OrderProdService();
+        orderService.showOrders(new OrderProdRetriever().retrieve() );
     }
+
 }

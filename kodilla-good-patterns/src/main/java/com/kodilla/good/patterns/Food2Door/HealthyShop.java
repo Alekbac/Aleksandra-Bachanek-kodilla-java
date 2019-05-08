@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HealthyShop implements Supplier{
+
+    private String productName;
+    private int prodQuantity;
+    private String supplierName;
+
     private List<Product> showProdList() {
         List<Product> productList = new ArrayList<>();
         productList.add( new Product( "Coconut water", 20 ) );
@@ -13,6 +18,22 @@ public class HealthyShop implements Supplier{
         return productList;
     }
 
+    @Override
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    @Override
+    public String getProdName() {
+        return productName;
+    }
+
+    @Override
+    public int getProdQuantity() {
+        return prodQuantity;
+    }
+
+    @Override
     public boolean process(Supplier supplier, List<Product> productList) {
         for (Product product : productList) {
             if (product.prodQuantity >15) {
@@ -24,22 +45,9 @@ public class HealthyShop implements Supplier{
     }
 
     @Override
-    public String getSupplierName() {
-        return null;
-    }
-
-    @Override
-    public String getProdName() {
-        return null;
-    }
-
-    @Override
-    public int getProdQuantity() {
-        return 0;
-    }
-
-    @Override
-    public boolean process() {
-        return false;
+    public String toString() {
+        return "HealthyShop{" +
+                "productName='" + productName + '\'' +
+                '}';
     }
 }

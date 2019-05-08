@@ -5,6 +5,10 @@ import java.util.List;
 
 public class ExtraFoodShop implements Supplier {
 
+    private String productName;
+    private int prodQuantity;
+    private String supplierName;
+
     private List<Product> showProdList() {
         List<Product> productList = new ArrayList<>();
         productList.add(new Product("Chia seeds", 20));
@@ -14,7 +18,22 @@ public class ExtraFoodShop implements Supplier {
         return productList;
     }
 
-    public boolean process(Supplier supplier, List<Product> productList){
+    @Override
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    @Override
+    public String getProdName() {
+        return productName;
+    }
+
+    @Override
+    public int getProdQuantity() {
+        return prodQuantity;
+    }
+
+    public boolean process(Supplier supplier, List<Product> productList) {
         for (Product product: productList){
             if (product.prodQuantity < 15){
                 System.out.println("Product: " + product.getProdName() + " is available in stock " +
@@ -25,22 +44,9 @@ public class ExtraFoodShop implements Supplier {
     }
 
     @Override
-    public String getSupplierName() {
-        return null;
-    }
-
-    @Override
-    public String getProdName() {
-        return null;
-    }
-
-    @Override
-    public int getProdQuantity() {
-        return 0;
-    }
-
-    @Override
-    public boolean process() {
-        return false;
+    public String toString() {
+        return "ExtraFoodShop{" +
+                "productName='" + productName + '\'' +
+                '}';
     }
 }

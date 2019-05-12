@@ -27,7 +27,7 @@ public class FlightSearcher {
 
         for(Airports first : firstFilter){
             for(Airports second : secondFilter){
-                if(first.getArrivalCity().equals( second.getDepartureCity() )){
+                if(first.getArrivalCity().equals( second.getDepartureCity())){
                     System.out.println(first + " " + second);
                 }
             }

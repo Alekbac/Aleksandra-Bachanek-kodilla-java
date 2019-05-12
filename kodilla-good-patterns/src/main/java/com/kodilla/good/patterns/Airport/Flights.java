@@ -12,7 +12,7 @@ public class Flights {
         listOfFlights.add (new Airports( "Hag", "Ber" ) );
         listOfFlights.add (new Airports( "Waw", "Krk") );
         listOfFlights.add (new Airports( "Krk", "Szcz") );
-        listOfFlights.add (new Airports( "Prag", "Ber") );
+        listOfFlights.add (new Airports( "Krk", "Ber") );
         listOfFlights.add (new Airports( "Poz", "Krk" ) );
     }
 

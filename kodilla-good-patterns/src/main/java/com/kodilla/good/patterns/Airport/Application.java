@@ -7,13 +7,18 @@ public class Application {
         Flights flights = new Flights();
         Set<Airports> search = flights.getListOfFlights();
 
+        System.out.println("Search flight from: ");
         FlightSearcher searchFlightFrom = new FlightSearcher();
-        searchFlightFrom.showFlightsFrom( search, "Waw");
+        searchFlightFrom.showFlightsFrom( search, "Ber");
+        System.out.println(" ");
 
+        System.out.println("Search flight to: ");
         FlightSearcher searchFlightTo = new FlightSearcher();
-        searchFlightTo.showFlightsTo( search, "Ber");
+        searchFlightTo.showFlightsTo( search, "Waw");
+        System.out.println(" ");
 
+        System.out.println("Search flight trough: ");
         FlightSearcher searchFlight = new FlightSearcher();
-        searchFlight.showAvailableConnection( search, "Waw", "Ber"  );
+        searchFlight.showAvailableConnection( search, "Ber", "Poz"  );
     }
 }

@@ -14,6 +14,4 @@ public class LibraryConfig {
     public LibraryDbController libraryDbController() {
         return new LibraryDbController();
     }
-
-
 }

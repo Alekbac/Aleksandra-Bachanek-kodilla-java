@@ -149,6 +149,7 @@ public class BoardTestSuite {
         double avgDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
+                //.mapToInt(t -> (int) ChronoUnit.DAYS.between(t.getCreated(),LocalDate.now()))
                 .mapToInt(t -> (int) ChronoUnit.DAYS.between(t.getCreated(),LocalDate.now()))
                 .average()
                 .getAsDouble();
@@ -158,3 +159,4 @@ public class BoardTestSuite {
     }
 }
 
+//mapToLong(task-> ChronoUnit.DAYS.between(t.getCreated(), LocalDate.now()))

@@ -1,0 +1,32 @@
+package com.kodilla.petterns.factory.tasks;
+
+public class ShoppingTask implements Task{
+
+    final String taskName;
+    final String whatToBuy;
+    final double quantity;
+    private boolean isExecuted;
+
+    public ShoppingTask(String taskName, String whatToBuy, double quantity) {
+        this.taskName = taskName;
+        this.whatToBuy = whatToBuy;
+        this.quantity = quantity;
+        isExecuted = false;
+    }
+
+    @Override
+    public void executeTask() {
+        isExecuted = false;
+    }
+
+    @Override
+    public String getTaskNAme() {
+        return taskName;
+    }
+
+    @Override
+    public boolean isTaskExecute() {
+        return isExecuted;
+    }
+
+}

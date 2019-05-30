@@ -2,7 +2,6 @@ package com.kodilla.jdbc;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.sql.SQLException;
 
 public class DbManagerTestSuite {

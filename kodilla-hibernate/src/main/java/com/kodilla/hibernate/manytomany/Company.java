@@ -5,6 +5,12 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.findByThreeChars",
+        query = "SELECT * FROM COMPANIES" +
+                " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PREFIX",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -35,13 +41,14 @@ public class Company {
         return employees;
     }
 
-    private void setEmployees(List<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 
     private void setId(int id) {
         this.id = id;
     }
+
     private void setName(String name) {
         this.name = name;
     }

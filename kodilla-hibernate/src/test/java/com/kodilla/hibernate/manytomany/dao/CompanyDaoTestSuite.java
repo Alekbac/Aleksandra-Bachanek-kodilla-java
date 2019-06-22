@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany() {
@@ -59,5 +63,46 @@ public class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }*/
+    }
+
+    @Test
+    public void testNamedQueries() {
+
+        //Given
+        Employee johnSmith = new Employee( "John", "Smith" );
+        Employee stephanieClarckson = new Employee( "Stephanie", "Smith" );
+        Employee lindaKovalsky = new Employee( "Linda", "Kovalsky" );
+
+        Company softwareMachine = new Company( "Software Machine" );
+        Company dataMaesters = new Company( "Data Maesters" );
+        Company greyMatter = new Company( "Grey Matter" );
+
+        softwareMachine.getEmployees().add( johnSmith );
+        dataMaesters.getEmployees().add( stephanieClarckson );
+        dataMaesters.getEmployees().add( lindaKovalsky );
+        greyMatter.getEmployees().add( johnSmith );
+        greyMatter.getEmployees().add( lindaKovalsky );
+
+        johnSmith.getCompanies().add( softwareMachine );
+        johnSmith.getCompanies().add( greyMatter );
+        stephanieClarckson.getCompanies().add( dataMaesters );
+        lindaKovalsky.getCompanies().add( dataMaesters );
+        lindaKovalsky.getCompanies().add( greyMatter );
+
+        companyDao.save( softwareMachine );
+        companyDao.save( dataMaesters );
+        companyDao.save( greyMatter );
+
+        //When
+        List<Employee> findByLastName = employeeDao.findByLastName( "Smith" );
+        List<Company> findByThreeChars = companyDao.findByThreeChars("Gre");
+
+        //Then
+        Assert.assertEquals(2, findByLastName.size());
+        Assert.assertEquals("Grey Matter",findByThreeChars.get( 0 ).getName());
+
+        //CleanUp
+        //employeeDao.delete(id);
+        //companyDao.delete(id);
     }
 }

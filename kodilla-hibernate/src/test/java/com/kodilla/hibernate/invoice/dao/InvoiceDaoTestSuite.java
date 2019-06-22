@@ -20,7 +20,7 @@ public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
    // @Autowired
-    //private ItemDao itemDao;
+    private ItemDao itemDao;
     @Autowired
     private ProductDao productDao;
 
@@ -59,6 +59,6 @@ public class InvoiceDaoTestSuite {
         Assert.assertEquals(3, items.size());
 
         //CleanUp
-        invoiceDao.delete( invoice100);
+        invoiceDao.delete(invoice100);
     }
 }

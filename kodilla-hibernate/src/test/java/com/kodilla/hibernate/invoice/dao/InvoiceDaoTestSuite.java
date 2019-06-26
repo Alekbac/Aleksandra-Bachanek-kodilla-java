@@ -31,13 +31,17 @@ public class InvoiceDaoTestSuite {
         Product product2 = new Product ("book");
         Product product3 = new Product ("USB_cable");
 
-        BigDecimal prod1price = new BigDecimal( 400 );
-        BigDecimal prod2price = new BigDecimal( 45 );
-        BigDecimal prod3price = new BigDecimal( 30 );
+        BigDecimal prod1price = new BigDecimal( "400" );
+        BigDecimal prod2price = new BigDecimal( "45" );
+        BigDecimal prod3price = new BigDecimal( "30" );
 
-        Item item1 = new Item (prod1price, 20, product1);
-        Item item2 = new Item (prod2price, 60, product2);
-        Item item3 = new Item (prod3price, 100, product3);
+        BigDecimal val1 = new BigDecimal( "10" );
+        BigDecimal val2 = new BigDecimal( "20" );
+        BigDecimal val3 = new BigDecimal( "30" );
+
+        Item item1 = new Item (prod1price, 20, product1, val1);
+        Item item2 = new Item (prod2price, 60, product2, val2);
+        Item item3 = new Item (prod3price, 100, product3, val3);
 
         Invoice invoice100 = new Invoice( "21/06/2019" );
 
@@ -45,7 +49,7 @@ public class InvoiceDaoTestSuite {
         item2.setInvoice( invoice100 );
         item3.setInvoice( invoice100 );
 
-        List<Item> items = new ArrayList<>(  );
+        List<Item> items = new ArrayList<>();
         items.add( item1 );
         items.add( item2 );
         items.add( item3 );
@@ -54,9 +58,12 @@ public class InvoiceDaoTestSuite {
 
         //When
         invoiceDao.save(invoice100);
+        int itemsNum = invoice100.getItems().size();
 
         //Then
-        Assert.assertEquals(3, items.size());
+
+        Assert.assertEquals(3, productDao.count());
+        Assert.assertEquals(3, itemsNum);
 
         //CleanUp
         invoiceDao.delete(invoice100);

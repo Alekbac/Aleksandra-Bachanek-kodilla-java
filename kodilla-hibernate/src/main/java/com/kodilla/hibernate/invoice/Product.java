@@ -27,7 +27,6 @@ public class Product {
         this.id = id;
     }
 
-    @NotNull
     @Column(name = "NAME")
     public String getName() {
         return name;

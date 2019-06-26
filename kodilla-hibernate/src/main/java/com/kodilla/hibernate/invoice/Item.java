@@ -14,10 +14,11 @@ public class Item {
     private Product product;
     private Invoice invoice;
 
-    public Item(BigDecimal price, int quantity, Product product) {
+    public Item(BigDecimal price, int quantity, Product product, BigDecimal value) {
         this.price = price;
         this.quantity = quantity;
         this.product = product;
+        this.value = value;
     }
 
     public Item(){
@@ -35,7 +36,6 @@ public class Item {
         this.id = id;
     }
 
-    @NotNull
     @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
@@ -45,7 +45,6 @@ public class Item {
         this.price = price;
     }
 
-    @NotNull
     @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
@@ -55,7 +54,6 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @NotNull
     @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;

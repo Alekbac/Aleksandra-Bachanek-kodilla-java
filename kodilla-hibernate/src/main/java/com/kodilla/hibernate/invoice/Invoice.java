@@ -21,22 +21,21 @@ public class Invoice {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
+    @Column(name = "INVOICE_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    @NotNull
     @Column(name = "NUMBER")
     public String getNumber() {
         return number;
     }
 
-    private void setNumber(String number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -46,8 +45,7 @@ public class Invoice {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    @NotNull
-    @Column(name = "ITEM_ID")
+
     public List<Item> getItems() {
         return items;
     }

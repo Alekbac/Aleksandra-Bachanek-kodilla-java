@@ -102,7 +102,7 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals("Grey Matter",findByThreeChars.get( 0 ).getName());
 
         //CleanUp
-        //employeeDao.delete(id);
-        //companyDao.delete(id);
+        /*employeeDao.delete(id);
+        companyDao.delete(id);*/
     }
 }

@@ -12,6 +12,9 @@ import java.util.List;
 @Transactional
 @Repository
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
-    @Query
+    @Query(nativeQuery = true)
     List<Employee> findByLastName (@Param("LASTNAME")String lastname);
+
+    @Query(nativeQuery = true)
+    List<Employee> findByPartOfLastname (@Param("LASTNAME")String lastname);
 }

@@ -5,12 +5,21 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
-        name = "Employee.findByLastName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Employee.findByLastName",
+                query = "SELECT * FROM Employee WHERE lastname = :LASTNAME",
+                resultClass = Employee.class
+        ),
+        @NamedNativeQuery(
+                name = "Employee.findByPartOfLastname",
+                query = "SELECT * FROM Employee WHERE LASTNAME LIKE CONCAT('%', :LASTNAME , '%')",
+                resultClass = Employee.class
+        )
+})
+
 @Entity
-@Table(name = "EMPLOYEES")
+@Table(name = "EMPLOYEE")
 public class Employee {
     private int id;
     private String firstname;
@@ -19,10 +28,12 @@ public class Employee {
 
     public Employee() {
     }
+
     public Employee(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -30,11 +41,13 @@ public class Employee {
     public int getId() {
         return id;
     }
+
     @NotNull
     @Column(name = "FIRSTNAME")
     public String getFirstname() {
         return firstname;
     }
+
     @NotNull
     @Column(name = "LASTNAME")
     public String getLastname() {
@@ -47,6 +60,7 @@ public class Employee {
             joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
     )
+
     public List<Company> getCompanies() {
         return companies;
     }
@@ -58,6 +72,7 @@ public class Employee {
     private void setId(int id) {
         this.id = id;
     }
+
     private void setFirstname(String firstname) {
         this.firstname = firstname;
     }

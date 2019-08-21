@@ -5,12 +5,21 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.findByThreeChars",
-        query = "SELECT * FROM COMPANIES" +
-                " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PREFIX",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+            name = "Company.findByThreeChars",
+            query = "SELECT * FROM COMPANIES" +
+                    " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :PREFIX",
+            resultClass = Company.class
+        ),
+
+        @NamedNativeQuery(
+            name = "Company.findByPartOfName",
+            query = "SELECT * FROM COMPANIES" +
+                " WHERE COMPANY_NAME LIKE CONCAT('%', :NAME , '%')",
+                resultClass = Company.class
+        )
+})
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -20,9 +29,11 @@ public class Company {
 
     public Company() {
     }
+
     public Company(String name) {
         this.name = name;
     }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -30,6 +41,7 @@ public class Company {
     public int getId() {
         return id;
     }
+
     @NotNull
     @Column(name = "COMPANY_NAME")
     public String getName() {
